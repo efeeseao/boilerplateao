@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /search?q=
+Disallow: /admin
+
+Sitemap: https://boilerplateao.vercel.app/sitemap.xml

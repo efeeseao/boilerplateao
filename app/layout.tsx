@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from 'next'
+import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({
@@ -86,7 +88,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt">
+    <html lang="pt" className="scroll-smooth" suppressHydrationWarning>
+      {process.env.NODE_ENV === 'production' && (
+        <>
+          <GoogleTagManager gtmId="YOUR_ID" />
+          <GoogleAnalytics gaId="YOUR_ID" />
+        </>
+      )}
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   )
